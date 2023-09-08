@@ -9,9 +9,8 @@ import UIKit
 
 final class InfoLabel: UILabel {
     
-    init(text: String, fontSize: CGFloat, textColor: UIColor, numberOfLines: Int) {
+    init(fontSize: CGFloat, textColor: UIColor, numberOfLines: Int) {
         super.init(frame: .zero)
-        self.text = text
         self.font = UIFont.systemFont(ofSize: fontSize)
         self.textColor = textColor
         self.numberOfLines = numberOfLines

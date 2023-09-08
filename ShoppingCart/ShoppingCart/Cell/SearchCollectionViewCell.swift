@@ -17,7 +17,7 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
     
     let mallNameLabel = {
         let view = InfoLabel(
-            text: "[mallName]",
+//            text: "[mallName]",
             fontSize: 12,
             textColor: Constants.BaseColor.subText,
             numberOfLines: 1
@@ -27,7 +27,7 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
     
     let titleLabel = {
         let view = InfoLabel(
-            text: "2층 캠핑카 자동차 캠핑 카라반 국내 여행 발리 보라카이 유니버셜 일본여행이이이이이아에이오우",
+//            text: "2층 캠핑카 자동차 캠핑 카라반 국내 여행 발리 보라카이 유니버셜 일본여행이이이이이아에이오우",
             fontSize: 13,
             textColor: Constants.BaseColor.text,
             numberOfLines: 2
@@ -37,7 +37,7 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
     
     let lPriceLabel = {
         let view = InfoLabel(
-            text: "26,500,600,008,990",
+//            text: "26,500,600,008,990",
             fontSize: 16,
             textColor: Constants.BaseColor.text,
             numberOfLines: 1
@@ -74,7 +74,7 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
         }
         
         mallNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(2)
+            make.top.equalTo(imageView.snp.bottom).offset(5)
             make.horizontalEdges.equalToSuperview().inset(5)
         }
         

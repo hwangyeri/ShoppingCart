@@ -9,9 +9,9 @@ import Foundation
 
 // MARK: - Shopping
 struct Shopping: Codable {
-    let lastBuildDate: String // 검색 결과를 생성한 시간
+//    let lastBuildDate: String // 검색 결과를 생성한 시간
     let total, start, display: Int // 총 검색 결과 개수, 검색 시작 위치, 한 번에 표시할 검색 결과 개수
-    let items: [Item]
+    var items: [Item]
 }
 
 // MARK: - Item

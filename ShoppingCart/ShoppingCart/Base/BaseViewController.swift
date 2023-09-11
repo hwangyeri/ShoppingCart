@@ -13,14 +13,13 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         configure()
         setConstraints()
+        hideKeyboardWhenTappedBackground()
         view.backgroundColor = Constants.BaseColor.background
     }
     
-    func configure() {
-        
-    }
+    func configure() { }
     
-    func setConstraints() {}
+    func setConstraints() { }
     
     func showAlertMessage(title: String, button: String = "확인", handler: (() -> ())? = nil ) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
@@ -32,4 +31,20 @@ class BaseViewController: UIViewController {
     }
     
 }
+
+// MARK: - Hide Keyboard
+
+extension UIViewController {
+
+    func hideKeyboardWhenTappedBackground() {
+         let tapEvent = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+         tapEvent.cancelsTouchesInView = false
+         view.addGestureRecognizer(tapEvent)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 

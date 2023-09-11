@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SearchCollectionViewCell: BaseCollectionViewCell {
+class ReusableCollectionViewCell: BaseCollectionViewCell {
     
     let imageView = {
         let view = PhotoImageView(frame: .zero)
@@ -47,7 +47,6 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
     
     let likeButton = {
         let view = UIButton()
-        view.setImage(UIImage(systemName: "heart"), for: .normal)
         view.tintColor = .black
         return view
     }()

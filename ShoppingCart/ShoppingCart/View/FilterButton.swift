@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FilterButton: UIButton { // final 더이상 상속이 안될거야 ~
+final class FilterButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

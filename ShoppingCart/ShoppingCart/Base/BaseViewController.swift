@@ -32,10 +32,11 @@ class BaseViewController: UIViewController {
     
 }
 
-// MARK: - Hide Keyboard
 
 extension UIViewController {
 
+    // MARK: - Hide Keyboard
+    
     func hideKeyboardWhenTappedBackground() {
          let tapEvent = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
          tapEvent.cancelsTouchesInView = false
@@ -45,6 +46,7 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
 }
 
 

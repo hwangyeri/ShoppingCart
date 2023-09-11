@@ -13,8 +13,7 @@ extension Constants {
         static let background = UIColor.systemBackground
         static let border = UIColor.systemGray.cgColor
         static let text = UIColor.label
-//        static let placeholder = UIColor.systemGray
-        static let subText = UIColor.systemGray // FIXME: 색 바꾸기
+        static let subText = UIColor.systemGray
         static let point = UIColor.systemRed
     }
     

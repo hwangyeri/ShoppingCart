@@ -8,17 +8,21 @@
 import UIKit
 import SnapKit
 import Kingfisher
+//import RealmSwift
 
 class SearchViewController: BaseViewController {
     
     let mainView = SearchView()
+    let repositoy = ShoppingTableRepository()
     
     var page = 1
     var start = 1
-    var isLoading = false
+    var isEnd = false
     
     var currentFilterType: Endpoint.SortType = .sim
     var selectedFilterButton: UIButton?
+    
+//    let realm = try! Realm()
         
     private var searchList: Shopping = Shopping(total: 0, start: 0, display: 0, items: [])
     
@@ -28,8 +32,14 @@ class SearchViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        print(realm.configuration.fileURL ?? "fileURL print Error")
         searchBarCancelButtonAttributes()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        mainView.collectionView.reloadData()
     }
     
     override func configure() {
@@ -47,14 +57,14 @@ class SearchViewController: BaseViewController {
         selectFilterButton(mainView.accuracyFilterButton) // 초기 필터 상태를 정확도로 설정
     }
     
-    //Custom CancelButton
+    // Custom CancelButton
     func searchBarCancelButtonAttributes() {
         let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: Constants.BaseColor.text]
         UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "취소"
     }
     
-    //Call API
+    // Call API
     private func callSearchAPI(_ filterType: Endpoint.SortType) {
         print(#function)
         
@@ -68,12 +78,12 @@ class SearchViewController: BaseViewController {
         
         APIService.shared.searchShopping(type: filterType, query: query, page: page, start: start) { data in
             guard let data = data else {
-                // FIXME: 검색 결과가 없을때 처리 필요 -> 검색 결과가 없음 Alert, EmptyView 보여주기
+                //FIXME: 검색 결과가 없을때 처리 필요 => 검색 결과가 없음 Alert, EmptyView 보여주기
                 return
             }
             
             self.searchList = data
-            print("------ 데이터 -------", data)
+            //print("------ 데이터 -------", data)
             //print("------ 서치리스트 -------", self.searchList)
             
             DispatchQueue.main.async {
@@ -89,7 +99,8 @@ class SearchViewController: BaseViewController {
         }
     }
     
-    //MARK: - FilterButton
+    // MARK: - FilterButton
+    
     @objc func accuracyFilterButtonTapped() {
         callSearchAPI(.sim)
         currentFilterType = .sim
@@ -113,7 +124,6 @@ class SearchViewController: BaseViewController {
         currentFilterType = .asc
         selectFilterButton(mainView.lPriceFilterButton)
     }
-
     
     func selectFilterButton(_ button: UIButton) {
         // 선택된 필터 버튼 컬러 변경
@@ -129,9 +139,11 @@ class SearchViewController: BaseViewController {
         selectedFilterButton = button
     }
     
+    
 }
 
-//MARK: - CollectionView
+// MARK: - CollectionView
+
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -139,31 +151,95 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReusableCollectionViewCell.reuseIdentifier, for: indexPath) as? ReusableCollectionViewCell else { return UICollectionViewCell() }
         let data = searchList.items[indexPath.row]
         
 //        cell.backgroundColor = .systemYellow
 //        cell.imageView.backgroundColor = .systemRed
         
         cell.mallNameLabel.text = "[\(data.mallName)]"
-        cell.titleLabel.text = data.title
-        cell.lPriceLabel.text = data.lprice //FIXME: NumberFormatter
+        cell.titleLabel.text = data.title.removeHTMLTags()
+        cell.lPriceLabel.text = data.lprice.formatNumber()
         
-        guard let url = URL(string: data.image) else {
+        if let url = URL(string: data.image) {
+            cell.imageView.kf.setImage(with: url)
+        } else {
             showAlertMessage(title: "이미지 로드 실패") {
                 cell.imageView.image = UIImage(systemName: "nosign")
             }
-            return cell
         }
         
-        cell.imageView.kf.setImage(with: url)
+        let duplicateItems = repositoy.duplicateFilterItems(forProductID: data.productID)
         
+        if duplicateItems.isEmpty {
+            DispatchQueue.main.async {
+                cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            }
+        } else {
+            DispatchQueue.main.async {
+                cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            }
+        }
+        
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        vc.searchSelectedItem = searchList.items[indexPath.row]
+        vc.isFromLikeView = false
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+// MARK: - >>>>> 좋아요 버튼 클릭 <<<<<<
+    
+    @objc func likeButtonTapped(sender: UIButton) {
+        print("----- 서치뷰 좋아요 버튼 -----")
+        
+        let rowIndex = sender.tag
+        guard rowIndex >= 0 && rowIndex < searchList.items.count else {
+            return
+        }
+        print("\\\\\\ 인덱스 \\\\\\", rowIndex)
+        
+        let item = searchList.items[rowIndex]
+        print("-------- 아이템 -----", item)
+        
+        let duplicateItems = repositoy.duplicateFilterItems(forProductID: item.productID)
+        
+        if duplicateItems.isEmpty {
+            let newItem = ShoppingTable(productID: item.productID, photo: item.image, mallName: item.mallName, title: item.title, price: item.lprice, likeDate: Date())
+            repositoy.createItem(newItem)
+            print("새로운 아이템 저장: \(newItem)")
+            
+            if let cell = mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) as? ReusableCollectionViewCell {
+                DispatchQueue.main.async {
+                    cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                }
+            }
+        } else {
+            let duplicatedItem = duplicateItems.first!
+            repositoy.deleteItem(duplicatedItem)
+            print("중복 아이템 삭제: \(duplicatedItem)")
+            
+            if let cell = mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) as? ReusableCollectionViewCell {
+                DispatchQueue.main.async {
+                    cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                }
+            }
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name("DataDidChange"), object: nil)
+    }
+    
     
 }
 
 // MARK: - SearchBar
+
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -189,17 +265,19 @@ extension SearchViewController: UISearchBarDelegate {
         selectFilterButton(mainView.accuracyFilterButton) // 취소버튼 클릭시 정확도 버튼을 디폴트로 설정
     }
     
+    
 }
 
-//MARK: - Pagination
+// MARK: - Pagination
+
 extension SearchViewController: UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
-            if indexPath.row >= searchList.items.count - 1 && !isLoading {
+            if indexPath.row >= searchList.items.count - 1 && !isEnd {
                 
-                guard !isLoading else { return }
-                isLoading = true
+                guard !isEnd else { return }
+                isEnd = true
                 
                 // 검색 시작 위치를 수정해서 중복 데이터 호출 방지
                 let nextPageStart = page * searchList.display + 1
@@ -230,7 +308,7 @@ extension SearchViewController: UICollectionViewDataSourcePrefetching {
                     
                     DispatchQueue.main.async {
                         self.mainView.collectionView.reloadData()
-                        self.isLoading = false
+                        self.isEnd = false
                     }
                 }
             }
@@ -240,6 +318,7 @@ extension SearchViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
         print("------- 취소: \(indexPaths) -----")
     }
+    
     
 }
 

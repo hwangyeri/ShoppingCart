@@ -13,7 +13,7 @@ class DetailViewController: BaseViewController {
     
     let mainView = DetailView()
     var webView = WKWebView()
-    let repositoy = ShoppingTableRepository()
+    let repository = ShoppingTableRepository()
     var likeButton = UIButton()
     
     var searchSelectedItem: Item = Item(title: "", image: "", lprice: "", mallName: "", productID: "")
@@ -28,20 +28,22 @@ class DetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if isFromLikeView {
-            // 라이크 뷰에서 열린 경우
-            let selectedItem = likeSelectedItem
-            configureDetailView(with: selectedItem)
-        } else {
-            // 서치 뷰에서 열린 경우
-            let selectedItem = searchSelectedItem
-            configureDetailView(with: selectedItem)
-        }
-        
         // 좋아요 버튼 설정
         likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: likeButton)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if isFromLikeView {
+            // 라이크 뷰에서 열린 경우
+            configureDetailView(with: likeSelectedItem)
+        } else {
+            // 서치 뷰에서 열린 경우
+            configureDetailView(with: searchSelectedItem)
+        }
     }
     
     override func configure() {
@@ -65,11 +67,11 @@ class DetailViewController: BaseViewController {
             let myRequest = URLRequest(url: myURL)
             mainView.webView.load(myRequest)
         } else {
-            //FIXME: URL 생성 실패 시 처리할 코드 추가하기
+            showAlertMessage(title: "상품의 URL에 문제가 있습니다.\n다시 시도해주세요. 🥲")
             print("URL 생성 실패")
         }
         
-        let duplicateItems = repositoy.duplicateFilterItems(forProductID: selectedItem.productID)
+        let duplicateItems = repository.duplicateFilterItems(forProductID: selectedItem.productID)
 
         if duplicateItems.isEmpty {
             DispatchQueue.main.async {
@@ -89,18 +91,18 @@ class DetailViewController: BaseViewController {
         print(#function)
         
         let selectedItem = isFromLikeView ? likeSelectedItem : searchSelectedItem
-        let duplicateItems = repositoy.duplicateFilterItems(forProductID: selectedItem.productID)
+        let duplicateItems = repository.duplicateFilterItems(forProductID: selectedItem.productID)
         
         if duplicateItems.isEmpty {
             let newItem = ShoppingTable(productID: selectedItem.productID, photo: selectedItem.image, mallName: selectedItem.mallName, title: selectedItem.title, price: selectedItem.lprice, likeDate: Date())
-            repositoy.createItem(newItem)
+            repository.createItem(newItem)
             print("새로운 아이템 저장: \(newItem)")
             DispatchQueue.main.async {
                 self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             }
         } else {
             if let duplicatedItem = duplicateItems.first {
-                repositoy.deleteItem(duplicatedItem)
+                repository.deleteItem(duplicatedItem)
                 print("중복 아이템 삭제: \(duplicatedItem)")
                 DispatchQueue.main.async {
                     self.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)

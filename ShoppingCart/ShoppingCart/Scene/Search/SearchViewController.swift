@@ -13,7 +13,7 @@ import Kingfisher
 class SearchViewController: BaseViewController {
     
     let mainView = SearchView()
-    let repositoy = ShoppingTableRepository()
+    let repository = ShoppingTableRepository()
     
     var page = 1
     var start = 1
@@ -39,7 +39,9 @@ class SearchViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        mainView.collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.mainView.collectionView.reloadData()
+        }
     }
     
     override func configure() {
@@ -55,6 +57,10 @@ class SearchViewController: BaseViewController {
         mainView.lPriceFilterButton.addTarget(self, action: #selector(lPriceFilterButtonTapped), for: .touchUpInside)
         
         selectFilterButton(mainView.accuracyFilterButton) // 초기 필터 상태를 정확도로 설정
+        
+        DispatchQueue.main.async {
+            self.mainView.emptyView.isHidden = false
+        }
     }
     
     // Custom CancelButton
@@ -72,29 +78,36 @@ class SearchViewController: BaseViewController {
         searchList.items.removeAll()
         
         guard let query = mainView.searchBar.text else {
+            DispatchQueue.main.async {
+                self.showAlertMessage(title: "잘못된 검색어 입니다.\n검색어를 다시 입력해주세요. 😢")
+            }
             print("검색어 오류 query issue")
             return
         }
         
         APIService.shared.searchShopping(type: filterType, query: query, page: page, start: start) { data in
-            guard let data = data else {
-                //FIXME: 검색 결과가 없을때 처리 필요 => 검색 결과가 없음 Alert, EmptyView 보여주기
-                return
-            }
             
-            self.searchList = data
-            //print("------ 데이터 -------", data)
-            //print("------ 서치리스트 -------", self.searchList)
-            
-            DispatchQueue.main.async {
-                self.mainView.collectionView.reloadData()
+            if let data = data, data.total > 0 {
+                self.searchList = data
+                //print("------ 데이터 -------", data)
+                //print("------ 서치리스트 -------", self.searchList)
                 
-                // 새로 검색했을때 맨 상단 화면 보여주기 위해서 맨 위로 스크롤
-                if self.searchList.items.count > 0 {
-                    let indexPath = IndexPath(item: 0, section: 0)
-                    self.mainView.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+                DispatchQueue.main.async {
+                    self.mainView.emptyView.isHidden = true
+                    self.mainView.collectionView.reloadData()
+                    
+                    // 새로 검색했을 때 맨 상단 화면 보여주기 위해서 맨 위로 스크롤
+                    if self.searchList.items.count > 0 {
+                        let indexPath = IndexPath(item: 0, section: 0)
+                        self.mainView.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+                    }
                 }
-                
+            } else {
+                DispatchQueue.main.async {
+                    self.mainView.emptyView.isHidden = false
+                    self.mainView.collectionView.reloadData()
+                    self.showAlertMessage(title: "검색된 결과가 없습니다.\n검색어를 다시 입력해주세요. 🥹")
+                }
             }
         }
     }
@@ -135,7 +148,6 @@ class SearchViewController: BaseViewController {
             previousSelectedButton.backgroundColor = Constants.FilterButtonColor.defaultBackground
             previousSelectedButton.setTitleColor(Constants.FilterButtonColor.defaultText, for: .normal)
         }
-        
         selectedFilterButton = button
     }
     
@@ -169,7 +181,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             }
         }
         
-        let duplicateItems = repositoy.duplicateFilterItems(forProductID: data.productID)
+        let duplicateItems = repository.duplicateFilterItems(forProductID: data.productID)
         
         if duplicateItems.isEmpty {
             DispatchQueue.main.async {
@@ -208,11 +220,11 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         let item = searchList.items[rowIndex]
         print("-------- 아이템 -----", item)
         
-        let duplicateItems = repositoy.duplicateFilterItems(forProductID: item.productID)
+        let duplicateItems = repository.duplicateFilterItems(forProductID: item.productID)
         
         if duplicateItems.isEmpty {
             let newItem = ShoppingTable(productID: item.productID, photo: item.image, mallName: item.mallName, title: item.title, price: item.lprice, likeDate: Date())
-            repositoy.createItem(newItem)
+            repository.createItem(newItem)
             print("새로운 아이템 저장: \(newItem)")
             
             if let cell = mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) as? ReusableCollectionViewCell {
@@ -222,7 +234,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             }
         } else {
             let duplicatedItem = duplicateItems.first!
-            repositoy.deleteItem(duplicatedItem)
+            repository.deleteItem(duplicatedItem)
             print("중복 아이템 삭제: \(duplicatedItem)")
             
             if let cell = mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) as? ReusableCollectionViewCell {
@@ -257,6 +269,7 @@ extension SearchViewController: UISearchBarDelegate {
         print("---- searchList 데이터 삭제되었는지 확인 ------", searchList.items)
         
         DispatchQueue.main.async {
+            self.mainView.emptyView.isHidden = false
             self.mainView.collectionView.reloadData()
         }
         

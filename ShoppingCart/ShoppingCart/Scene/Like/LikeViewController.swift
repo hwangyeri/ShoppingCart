@@ -72,9 +72,7 @@ extension LikeViewController: UICollectionViewDataSource, UICollectionViewDelega
         if let url = URL(string: data.photo) {
             cell.imageView.kf.setImage(with: url)
         } else {
-            showAlertMessage(title: "이미지 로드 실패: 유효하지 않은 이미지입니다.") {
-                cell.imageView.image = UIImage(systemName: "nosign")
-            }
+            cell.imageView.image = UIImage(systemName: "nosign")
         }
         
         cell.likeButton.tag = indexPath.row
@@ -109,11 +107,27 @@ extension LikeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let item = likeList[rowIndex]
         print("-------- 아이템 -----", item)
         
-        if let cell = mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) as? ReusableCollectionViewCell {
-            repository.deleteItem(item)
+        let alertController = UIAlertController(
+            title: "잠시만요..!",
+            message: "해당 상품이 좋아요 목록에서 삭제됩니다.\n정말로 삭제하실 건가요? 🥹",
+            preferredStyle: .alert
+        )
+        
+        let deleteAction = UIAlertAction(title: "삭제", style: .destructive) { _ in
+            
+            if self.mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) is ReusableCollectionViewCell {
+                self.repository.deleteItem(item)
+            }
+            
+            NotificationCenter.default.post(name: NSNotification.Name("DataDidChange"), object: nil)
         }
         
-        NotificationCenter.default.post(name: NSNotification.Name("DataDidChange"), object: nil)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
 }

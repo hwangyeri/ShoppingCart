@@ -8,6 +8,7 @@
 import Foundation
 
 extension URL {
+    
     static let baseURL = "https://openapi.naver.com/v1/search/shop.json?"
     
     static func makeEndPointString(_ endpoint: String) -> String {

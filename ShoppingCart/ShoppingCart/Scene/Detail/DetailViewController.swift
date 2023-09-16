@@ -67,7 +67,7 @@ class DetailViewController: BaseViewController {
             let myRequest = URLRequest(url: myURL)
             mainView.webView.load(myRequest)
         } else {
-            showAlertMessage(title: "상품의 URL에 문제가 있습니다.\n다시 시도해주세요. 🥲")
+            showAlertMessage(message: "상품의 URL에 문제가 있습니다.\n다시 시도해주세요. 😭")
             print("URL 생성 실패")
         }
         

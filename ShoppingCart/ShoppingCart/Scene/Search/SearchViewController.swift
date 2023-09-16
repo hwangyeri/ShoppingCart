@@ -79,7 +79,7 @@ class SearchViewController: BaseViewController {
         
         guard let query = mainView.searchBar.text else {
             DispatchQueue.main.async {
-                self.showAlertMessage(title: "잘못된 검색어 입니다.\n검색어를 다시 입력해주세요. 😢")
+                self.showAlertMessage(message: "잘못된 검색어 입니다.\n검색어를 다시 입력해주세요. 😢")
             }
             print("검색어 오류 query issue")
             return
@@ -106,7 +106,7 @@ class SearchViewController: BaseViewController {
                 DispatchQueue.main.async {
                     self.mainView.emptyView.isHidden = false
                     self.mainView.collectionView.reloadData()
-                    self.showAlertMessage(title: "검색된 결과가 없습니다.\n검색어를 다시 입력해주세요. 🥹")
+                    self.showAlertMessage(message: "검색된 결과가 없습니다.\n검색어를 다시 입력해주세요. 😢")
                 }
             }
         }
@@ -176,9 +176,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         if let url = URL(string: data.image) {
             cell.imageView.kf.setImage(with: url)
         } else {
-            showAlertMessage(title: "이미지 로드 실패") {
-                cell.imageView.image = UIImage(systemName: "nosign")
-            }
+            cell.imageView.image = UIImage(systemName: "nosign")
         }
         
         let duplicateItems = repository.duplicateFilterItems(forProductID: data.productID)

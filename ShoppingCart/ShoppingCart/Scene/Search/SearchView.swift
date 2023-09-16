@@ -59,9 +59,14 @@ class SearchView: BaseView {
         return layout
     }
     
+    let emptyView = {
+        let view = EmptyView()
+        return view
+    }()
+    
     override func configureView() {
         
-        [searchBar, accuracyFilterButton, dateFilterButton, hPriceFilterButton, lPriceFilterButton, collectionView].forEach {
+        [searchBar, accuracyFilterButton, dateFilterButton, hPriceFilterButton, lPriceFilterButton, collectionView, emptyView].forEach {
             addSubview($0)
         }
     }
@@ -99,6 +104,10 @@ class SearchView: BaseView {
         
         collectionView.snp.makeConstraints { make in
             make.horizontalEdges.bottom.equalToSuperview()
+        }
+        
+        emptyView.snp.makeConstraints { make in
+            make.edges.equalTo(collectionView)
         }
         
     }

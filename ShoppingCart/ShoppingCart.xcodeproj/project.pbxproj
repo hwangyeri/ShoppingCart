@@ -12,8 +12,6 @@
 		2B279BF12AA9AD4500645766 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279BF02AA9AD4500645766 /* ViewController.swift */; };
 		2B279BF62AA9AD4600645766 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B279BF52AA9AD4600645766 /* Assets.xcassets */; };
 		2B279BF92AA9AD4600645766 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B279BF72AA9AD4600645766 /* LaunchScreen.storyboard */; };
-		2B279C072AA9AE6400645766 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2B279C062AA9AE6400645766 /* Realm */; };
-		2B279C092AA9AE6400645766 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2B279C082AA9AE6400645766 /* RealmSwift */; };
 		2B279C0B2AA9B20E00645766 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2B279C0A2AA9B20E00645766 /* .gitignore */; };
 		2B279C0D2AA9B23100645766 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C0C2AA9B23100645766 /* APIKey.swift */; };
 		2B279C102AA9B35E00645766 /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C0F2AA9B35E00645766 /* Shopping.swift */; };
@@ -26,7 +24,6 @@
 		2B279C252AA9C1EB00645766 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C242AA9C1EB00645766 /* SearchViewController.swift */; };
 		2B279C272AA9C23300645766 /* ReusableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C262AA9C23300645766 /* ReusableCollectionViewCell.swift */; };
 		2B279C292AA9C28A00645766 /* PhotoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C282AA9C28A00645766 /* PhotoImageView.swift */; };
-		2B279C2E2AA9C4E300645766 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 2B279C2D2AA9C4E300645766 /* SnapKit-Dynamic */; };
 		2B279C332AAA1A4E00645766 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C322AAA1A4E00645766 /* FilterButton.swift */; };
 		2B279C352AAA373400645766 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C342AAA373400645766 /* SearchView.swift */; };
 		2B279C372AAA376500645766 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C362AAA376500645766 /* BaseView.swift */; };
@@ -42,6 +39,10 @@
 		2B279C592AAE3E7100645766 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C582AAE3E7100645766 /* DetailViewController.swift */; };
 		2B279C5B2AAE3EE800645766 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C5A2AAE3EE800645766 /* DetailView.swift */; };
 		2B279CBD2AAF3AE800645766 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279CBC2AAF3AE800645766 /* String+Extension.swift */; };
+		2B589E6E2AB29D7300941615 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2B589E6D2AB29D7300941615 /* Realm */; };
+		2B589E702AB29D7300941615 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2B589E6F2AB29D7300941615 /* RealmSwift */; };
+		2BD126792AB5A03700F6C0F2 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD126782AB5A03700F6C0F2 /* EmptyView.swift */; };
+		2BD1267C2AB5B27000F6C0F2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2BD1267B2AB5B27000F6C0F2 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		2B279C582AAE3E7100645766 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2B279C5A2AAE3EE800645766 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		2B279CBC2AAF3AE800645766 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		2BD126782AB5A03700F6C0F2 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,10 +87,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B589E702AB29D7300941615 /* RealmSwift in Frameworks */,
+				2BD1267C2AB5B27000F6C0F2 /* SnapKit in Frameworks */,
+				2B589E6E2AB29D7300941615 /* Realm in Frameworks */,
 				2B279C432AAB252D00645766 /* Kingfisher in Frameworks */,
-				2B279C092AA9AE6400645766 /* RealmSwift in Frameworks */,
-				2B279C072AA9AE6400645766 /* Realm in Frameworks */,
-				2B279C2E2AA9C4E300645766 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +162,7 @@
 				2B279C282AA9C28A00645766 /* PhotoImageView.swift */,
 				2B279C322AAA1A4E00645766 /* FilterButton.swift */,
 				2B279C382AAA3CD000645766 /* InfoLabel.swift */,
+				2BD126782AB5A03700F6C0F2 /* EmptyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,10 +258,10 @@
 			);
 			name = ShoppingCart;
 			packageProductDependencies = (
-				2B279C062AA9AE6400645766 /* Realm */,
-				2B279C082AA9AE6400645766 /* RealmSwift */,
-				2B279C2D2AA9C4E300645766 /* SnapKit-Dynamic */,
 				2B279C422AAB252D00645766 /* Kingfisher */,
+				2B589E6D2AB29D7300941615 /* Realm */,
+				2B589E6F2AB29D7300941615 /* RealmSwift */,
+				2BD1267B2AB5B27000F6C0F2 /* SnapKit */,
 			);
 			productName = ShoppingCart;
 			productReference = 2B279BE92AA9AD4500645766 /* ShoppingCart.app */;
@@ -289,9 +292,9 @@
 			);
 			mainGroup = 2B279BE02AA9AD4500645766;
 			packageReferences = (
-				2B279C052AA9AE6400645766 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				2B279C2C2AA9C4E300645766 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				2B279C412AAB252D00645766 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				2B589E6C2AB29D7300941615 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				2BD1267A2AB5B27000F6C0F2 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 2B279BEA2AA9AD4500645766 /* Products */;
 			projectDirPath = "";
@@ -326,6 +329,7 @@
 				2B279BED2AA9AD4500645766 /* AppDelegate.swift in Sources */,
 				2B279C1E2AA9C08A00645766 /* BaseCollectionViewCell.swift in Sources */,
 				2B279C482AAB5D5700645766 /* URL+Extension.swift in Sources */,
+				2BD126792AB5A03700F6C0F2 /* EmptyView.swift in Sources */,
 				2B279C372AAA376500645766 /* BaseView.swift in Sources */,
 				2B279C292AA9C28A00645766 /* PhotoImageView.swift in Sources */,
 				2B279C1A2AA9BFDC00645766 /* Color.swift in Sources */,
@@ -415,7 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -469,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -486,6 +490,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T88N7TX7W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShoppingCart/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "황예리";
@@ -516,6 +521,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T88N7TX7W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShoppingCart/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "황예리";
@@ -563,22 +569,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2B279C052AA9AE6400645766 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.42.1;
-			};
-		};
-		2B279C2C2AA9C4E300645766 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		2B279C412AAB252D00645766 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -587,28 +577,44 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		2B589E6C2AB29D7300941615 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.42.1;
+			};
+		};
+		2BD1267A2AB5B27000F6C0F2 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2B279C062AA9AE6400645766 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2B279C052AA9AE6400645766 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		2B279C082AA9AE6400645766 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2B279C052AA9AE6400645766 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
-		2B279C2D2AA9C4E300645766 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2B279C2C2AA9C4E300645766 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
-		};
 		2B279C422AAB252D00645766 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2B279C412AAB252D00645766 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		2B589E6D2AB29D7300941615 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B589E6C2AB29D7300941615 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		2B589E6F2AB29D7300941615 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B589E6C2AB29D7300941615 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		2BD1267B2AB5B27000F6C0F2 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2BD1267A2AB5B27000F6C0F2 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

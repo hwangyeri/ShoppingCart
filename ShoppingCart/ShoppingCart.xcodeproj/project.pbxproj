@@ -19,7 +19,6 @@
 		2B279C1A2AA9BFDC00645766 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C192AA9BFDC00645766 /* Color.swift */; };
 		2B279C1C2AA9C00B00645766 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C1B2AA9C00B00645766 /* Constants.swift */; };
 		2B279C1E2AA9C08A00645766 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C1D2AA9C08A00645766 /* BaseCollectionViewCell.swift */; };
-		2B279C202AA9C09F00645766 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C1F2AA9C09F00645766 /* BaseTableViewCell.swift */; };
 		2B279C222AA9C0B200645766 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C212AA9C0B200645766 /* ReusableViewProtocol.swift */; };
 		2B279C252AA9C1EB00645766 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C242AA9C1EB00645766 /* SearchViewController.swift */; };
 		2B279C272AA9C23300645766 /* ReusableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C262AA9C23300645766 /* ReusableCollectionViewCell.swift */; };
@@ -60,7 +59,6 @@
 		2B279C192AA9BFDC00645766 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2B279C1B2AA9C00B00645766 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2B279C1D2AA9C08A00645766 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
-		2B279C1F2AA9C09F00645766 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		2B279C212AA9C0B200645766 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		2B279C242AA9C1EB00645766 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		2B279C262AA9C23300645766 /* ReusableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 				2B279C362AAA376500645766 /* BaseView.swift */,
 				2B279C162AA9BED200645766 /* BaseViewController.swift */,
 				2B279C1D2AA9C08A00645766 /* BaseCollectionViewCell.swift */,
-				2B279C1F2AA9C09F00645766 /* BaseTableViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -348,7 +345,6 @@
 				2B279C452AAB5C8C00645766 /* Endpoint.swift in Sources */,
 				2B279C272AA9C23300645766 /* ReusableCollectionViewCell.swift in Sources */,
 				2B279C352AAA373400645766 /* SearchView.swift in Sources */,
-				2B279C202AA9C09F00645766 /* BaseTableViewCell.swift in Sources */,
 				2B279C222AA9C0B200645766 /* ReusableViewProtocol.swift in Sources */,
 				2B279C552AAC651D00645766 /* ShoppingTableRepository.swift in Sources */,
 				2B279C1C2AA9C00B00645766 /* Constants.swift in Sources */,

@@ -40,6 +40,7 @@
 		2B279CBD2AAF3AE800645766 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279CBC2AAF3AE800645766 /* String+Extension.swift */; };
 		2B589E6E2AB29D7300941615 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2B589E6D2AB29D7300941615 /* Realm */; };
 		2B589E702AB29D7300941615 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2B589E6F2AB29D7300941615 /* RealmSwift */; };
+		2B66F16A2ABF218400F5CF55 /* Alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B66F1692ABF218400F5CF55 /* Alert+Extension.swift */; };
 		2BD126792AB5A03700F6C0F2 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD126782AB5A03700F6C0F2 /* EmptyView.swift */; };
 		2BD1267C2AB5B27000F6C0F2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2BD1267B2AB5B27000F6C0F2 /* SnapKit */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		2B279C582AAE3E7100645766 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2B279C5A2AAE3EE800645766 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		2B279CBC2AAF3AE800645766 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		2B66F1692ABF218400F5CF55 /* Alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Extension.swift"; sourceTree = "<group>"; };
 		2BD126782AB5A03700F6C0F2 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +236,7 @@
 			children = (
 				2B279C472AAB5D5700645766 /* URL+Extension.swift */,
 				2B279CBC2AAF3AE800645766 /* String+Extension.swift */,
+				2B66F1692ABF218400F5CF55 /* Alert+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				2B279C222AA9C0B200645766 /* ReusableViewProtocol.swift in Sources */,
 				2B279C552AAC651D00645766 /* ShoppingTableRepository.swift in Sources */,
 				2B279C1C2AA9C00B00645766 /* Constants.swift in Sources */,
+				2B66F16A2ABF218400F5CF55 /* Alert+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

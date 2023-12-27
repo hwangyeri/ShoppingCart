@@ -49,9 +49,10 @@ final class LikeCollectionViewCell: BaseCollectionViewCell {
     
     let likeButton = {
         let view = UIButton()
-        view.tintColor = .black
+//        view.tintColor = UIColor(named: "myGreen")
+        view.tintColor = Constants.BaseColor.text
         view.contentMode = .scaleAspectFit
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .regular)
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 23, weight: .regular)
         let image = UIImage(systemName: "heart.fill", withConfiguration: imageConfig)
         view.setImage(image, for: .normal)
         return view
@@ -83,7 +84,7 @@ final class LikeCollectionViewCell: BaseCollectionViewCell {
         }
         
         lPriceLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(5)
+            make.top.equalTo(titleLabel.snp.bottom).offset(6)
             make.horizontalEdges.equalTo(mallNameLabel)
         }
         

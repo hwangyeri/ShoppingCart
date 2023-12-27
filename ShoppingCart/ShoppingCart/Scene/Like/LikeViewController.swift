@@ -61,13 +61,16 @@ extension LikeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReusableCollectionViewCell.reuseIdentifier, for: indexPath) as? ReusableCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LikeCollectionViewCell.reuseIdentifier, for: indexPath) as? LikeCollectionViewCell else { return UICollectionViewCell() }
         let data = likeList[indexPath.row]
         
-        cell.mallNameLabel.text = "[\(data.mallName)]"
+        cell.mallNameLabel.text = data.mallName
         cell.titleLabel.text = data.title.removeHTMLTags()
-        cell.lPriceLabel.text = data.price.formatNumber()
-        cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        cell.lPriceLabel.text = "\(data.price.formatNumber())원"
+//        cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        
+        let formatDateResult = data.likeDate.timeAgo()
+        cell.likeDateLabel.text = formatDateResult
         
         if let url = URL(string: data.photo) {
             cell.imageView.kf.setImage(with: url)
@@ -115,7 +118,7 @@ extension LikeViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         let deleteAction = UIAlertAction(title: "삭제", style: .destructive) { _ in
             
-            if self.mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) is ReusableCollectionViewCell {
+            if self.mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) is LikeCollectionViewCell {
                 self.repository.deleteItem(item)
             }
             

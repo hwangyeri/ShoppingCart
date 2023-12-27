@@ -19,19 +19,20 @@ class LikeView: BaseView {
     
     lazy var collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
-        view.register(ReusableCollectionViewCell.self, forCellWithReuseIdentifier: ReusableCollectionViewCell.reuseIdentifier)
+        view.register(LikeCollectionViewCell.self, forCellWithReuseIdentifier: LikeCollectionViewCell.reuseIdentifier)
         view.collectionViewLayout = collectionViewLayout()
         return view
     }()
     
     private func collectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 12
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+        let spacing: CGFloat = 8
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
-        let size = UIScreen.main.bounds.width - (spacing * 3)
-        layout.itemSize = CGSize(width: size / 2, height: size / 1.35)
+        let widthSize = UIScreen.main.bounds.width
+        let heightSize = UIScreen.main.bounds.height / 5.5
+        layout.itemSize = CGSize(width: widthSize, height: heightSize)
         return layout
     }
     

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ReusableCollectionViewCell: BaseCollectionViewCell {
+class SearchCollectionViewCell: BaseCollectionViewCell {
     
     let imageView = {
         let view = PhotoImageView(frame: .zero)
@@ -17,7 +17,7 @@ class ReusableCollectionViewCell: BaseCollectionViewCell {
     
     let mallNameLabel = {
         let view = InfoLabel(
-            fontSize: 12,
+            fontWeight: .regular, fontSize: 12,
             textColor: Constants.BaseColor.subText,
             numberOfLines: 1
         )
@@ -26,7 +26,7 @@ class ReusableCollectionViewCell: BaseCollectionViewCell {
     
     let titleLabel = {
         let view = InfoLabel(
-            fontSize: 13,
+            fontWeight: .regular, fontSize: 13,
             textColor: Constants.BaseColor.text,
             numberOfLines: 2
         )
@@ -35,7 +35,7 @@ class ReusableCollectionViewCell: BaseCollectionViewCell {
     
     let lPriceLabel = {
         let view = InfoLabel(
-            fontSize: 16,
+            fontWeight: .semiBold, fontSize: 16,
             textColor: Constants.BaseColor.text,
             numberOfLines: 1
         )
@@ -95,6 +95,13 @@ class ReusableCollectionViewCell: BaseCollectionViewCell {
             make.size.equalTo(likeButton)
         }
         
+    }
+    
+    override func prepareForReuse() {
+        imageView.image = UIImage(named: "heart")
+        mallNameLabel.text = ""
+        titleLabel.text = ""
+        lPriceLabel.text = ""
     }
     
 }

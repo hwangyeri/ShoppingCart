@@ -142,11 +142,13 @@ class SearchViewController: BaseViewController {
         // 선택된 필터 버튼 컬러 변경
         button.backgroundColor = Constants.FilterButtonColor.selectedBackground
         button.setTitleColor(Constants.FilterButtonColor.selectedText, for: .normal)
+        button.titleLabel?.font = .customFont(.medium, size: 14)
         
         // 이전에 선택된 필터 버튼 컬러 초기화
         if let previousSelectedButton = selectedFilterButton, previousSelectedButton != button { // 취소 버튼을 눌렀을 때, 디폴트 필터가 선택된 상태로 유지
             previousSelectedButton.backgroundColor = Constants.FilterButtonColor.defaultBackground
             previousSelectedButton.setTitleColor(Constants.FilterButtonColor.defaultText, for: .normal)
+            previousSelectedButton.titleLabel?.font = .customFont(.regular, size: 14)
         }
         selectedFilterButton = button
     }
@@ -163,9 +165,10 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReusableCollectionViewCell.reuseIdentifier, for: indexPath) as? ReusableCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         let data = searchList.items[indexPath.row]
         
+        //Debeg
 //        cell.backgroundColor = .systemYellow
 //        cell.imageView.backgroundColor = .systemRed
         
@@ -225,7 +228,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             repository.createItem(newItem)
             print("새로운 아이템 저장: \(newItem)")
             
-            if let cell = mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) as? ReusableCollectionViewCell {
+            if let cell = mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) as? SearchCollectionViewCell {
                 DispatchQueue.main.async {
                     cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 }
@@ -235,7 +238,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             repository.deleteItem(duplicatedItem)
             print("중복 아이템 삭제: \(duplicatedItem)")
             
-            if let cell = mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) as? ReusableCollectionViewCell {
+            if let cell = mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) as? SearchCollectionViewCell {
                 DispatchQueue.main.async {
                     cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
                 }

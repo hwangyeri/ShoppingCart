@@ -41,10 +41,16 @@ class SearchView: BaseView {
         return view
     }()
     
-    lazy var collectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
-        view.register(ReusableCollectionViewCell.self, forCellWithReuseIdentifier: ReusableCollectionViewCell.reuseIdentifier)
-        view.collectionViewLayout = collectionViewLayout()
+    lazy var collectionView: UICollectionView = {
+        let layout: UICollectionViewLayout
+//        if #available(iOS 16.0, *) {
+//            layout = configurePinterestLayout()
+//        } else {
+            layout = collectionViewLayout()
+//        }
+
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
         return view
     }()
     
@@ -58,6 +64,28 @@ class SearchView: BaseView {
         layout.itemSize = CGSize(width: size / 2, height: size / 1.35)
         return layout
     }
+    
+//    @available(iOS 16.0, *)
+//    private func configurePinterestLayout() -> UICollectionViewLayout {
+//        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .estimated(120))
+//        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+//        
+//        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(120))
+//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 2)
+//        group.interItemSpacing = .fixed(10)
+//        
+//        let section = NSCollectionLayoutSection(group: group)
+//        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+//        section.interGroupSpacing = 10
+//        
+//        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+//        configuration.scrollDirection = .vertical
+//        
+//        let layout = UICollectionViewCompositionalLayout(section: section)
+//        layout.configuration = configuration
+//        
+//        return layout
+//    }
     
     let emptyView = {
         let view = EmptyView()
@@ -81,8 +109,8 @@ class SearchView: BaseView {
             make.top.equalTo(searchBar.snp.bottom).offset(10)
             make.leading.equalTo(searchBar).inset(10)
             make.bottom.equalTo(collectionView.snp.top).offset(-10)
-            make.width.equalTo(45)
-            make.height.equalTo(30)
+            make.width.equalTo(55)
+            make.height.equalTo(34)
         }
         
         dateFilterButton.snp.makeConstraints { make in
@@ -93,7 +121,7 @@ class SearchView: BaseView {
         hPriceFilterButton.snp.makeConstraints { make in
             make.verticalEdges.height.equalTo(accuracyFilterButton)
             make.leading.equalTo(dateFilterButton.snp.trailing).offset(8)
-            make.width.equalTo(70)
+            make.width.equalTo(80)
         }
         
         lPriceFilterButton.snp.makeConstraints { make in

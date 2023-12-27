@@ -13,7 +13,7 @@ final class EmptyView: UIView {
     let mainLabel = {
         let view = UILabel()
         view.text = "아직 검색 결과가 없습니다."
-        view.font = .boldSystemFont(ofSize: 16)
+        view.font = .customFont(.semiBold, size: 15)
         view.textColor = Constants.BaseColor.text
         return view
     }()
@@ -21,14 +21,14 @@ final class EmptyView: UIView {
     let subLabel = {
         let view = UILabel()
         view.text = "원하는 상품을 검색하고 저장해보세요!"
-        view.font = .systemFont(ofSize: 14)
+        view.font = .customFont(.regular, size: 13)
         view.textColor = Constants.BaseColor.text
         return view
     }()
     
     let imageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "heart.text.square")
+        view.image = UIImage(systemName: "doc.text.magnifyingglass")
         view.tintColor = Constants.BaseColor.text
         view.contentMode = .scaleAspectFit
         return view
@@ -57,7 +57,7 @@ final class EmptyView: UIView {
         imageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(170)
-            make.size.equalTo(60)
+            make.size.equalTo(50)
         }
         
         mainLabel.snp.makeConstraints { make in

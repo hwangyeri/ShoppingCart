@@ -17,8 +17,8 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
     
     let mallNameLabel = {
         let view = InfoLabel(
-            fontWeight: .regular, fontSize: 12,
-            textColor: Constants.BaseColor.subText,
+            fontWeight: .medium, fontSize: 14,
+            textColor: Constants.BaseColor.text,
             numberOfLines: 1
         )
         return view
@@ -64,25 +64,25 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func setConstraints() {
-        
         imageView.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(contentView)
-            make.height.equalTo(contentView).multipliedBy(0.68)
+            make.top.horizontalEdges.equalToSuperview()
+//            make.height.equalToSuperview().multipliedBy(0.7)
         }
         
         mallNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(5)
+            make.top.equalTo(imageView.snp.bottom).offset(12)
             make.horizontalEdges.equalToSuperview().inset(5)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(mallNameLabel.snp.bottom).offset(2)
+            make.top.equalTo(mallNameLabel.snp.bottom).offset(5)
             make.horizontalEdges.equalTo(mallNameLabel)
         }
         
         lPriceLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(2)
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.horizontalEdges.equalTo(mallNameLabel)
+            make.bottom.equalToSuperview().inset(20)
         }
         
         likeButton.snp.makeConstraints { make in

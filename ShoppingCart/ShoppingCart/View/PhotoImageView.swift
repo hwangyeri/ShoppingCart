@@ -12,11 +12,9 @@ final class PhotoImageView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentMode = .scaleAspectFill
+        contentMode = .scaleAspectFit
         clipsToBounds = true
         layer.cornerRadius = Constants.Desgin.cornerRadius
-        layer.borderWidth = Constants.Desgin.borderWidth
-        layer.borderColor = Constants.BaseColor.border
     }
     
     required init?(coder: NSCoder) {

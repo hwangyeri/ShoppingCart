@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         firstVC.navigationBar.topItem?.title = "쇼핑 검색"
 
         let secondVC = UINavigationController(rootViewController: LikeViewController())
-        secondVC.tabBarItem = UITabBarItem(title: "좋아요", image: UIImage(systemName: "heart"),selectedImage: UIImage(systemName: "heart.fill"))
+        secondVC.tabBarItem = UITabBarItem(title: "좋아요", image: UIImage(systemName: "heart"),selectedImage: UIImage(systemName: "heart"))
         secondVC.navigationBar.topItem?.title = "좋아요 목록"
         
         tabBar.viewControllers = [firstVC, secondVC]

@@ -172,9 +172,9 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
 //        cell.backgroundColor = .systemYellow
 //        cell.imageView.backgroundColor = .systemRed
         
-        cell.mallNameLabel.text = "[\(data.mallName)]"
+        cell.mallNameLabel.text = data.mallName
         cell.titleLabel.text = data.title.removeHTMLTags()
-        cell.lPriceLabel.text = data.lprice.formatNumber()
+        cell.lPriceLabel.text = "\(data.lprice.formatNumber())원"
         
         if let url = URL(string: data.image) {
             cell.imageView.kf.setImage(with: url)
@@ -191,6 +191,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         } else {
             DispatchQueue.main.async {
                 cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                cell.likeButton.tintColor = UIColor(named: "myGreen")
             }
         }
         
@@ -231,6 +232,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             if let cell = mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) as? SearchCollectionViewCell {
                 DispatchQueue.main.async {
                     cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    cell.likeButton.tintColor = UIColor(named: "myGreen")
                 }
             }
         } else {

@@ -20,15 +20,23 @@ final class EmptyView: UIView {
     
     let subLabel = {
         let view = UILabel()
-        view.text = "원하는 상품을 검색하고 저장해보세요!"
+        view.text = "원하는 상품을 검색하고 저장해 보세요!"
         view.font = .customFont(.regular, size: 13)
         view.textColor = Constants.BaseColor.text
         return view
     }()
     
+    let image2View = {
+        let view = UIImageView()
+        view.image = UIImage(named: "clean")
+        view.tintColor = Constants.BaseColor.text
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+    
     let imageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "doc.text.magnifyingglass")
+        view.image = UIImage(named: "search")
         view.tintColor = Constants.BaseColor.text
         view.contentMode = .scaleAspectFit
         return view
@@ -47,22 +55,27 @@ final class EmptyView: UIView {
     
     func configureView() {
         
-        [imageView, mainLabel, subLabel].forEach {
+        [image2View, imageView, mainLabel, subLabel].forEach {
             addSubview($0)
         }
     }
     
     func setConstraints() {
-        
         imageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(170)
             make.size.equalTo(50)
         }
         
+        image2View.snp.makeConstraints { make in
+            make.bottom.equalTo(imageView.snp.top).offset(22)
+            make.trailing.equalTo(imageView.snp.leading).offset(-2)
+            make.size.equalTo(20)
+        }
+        
         mainLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(imageView.snp.bottom).offset(20)
+            make.top.equalTo(imageView.snp.bottom).offset(25)
         }
         
         subLabel.snp.makeConstraints { make in

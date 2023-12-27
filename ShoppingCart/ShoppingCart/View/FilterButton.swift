@@ -14,10 +14,11 @@ final class FilterButton: UIButton {
         
         backgroundColor = Constants.BaseColor.background
         layer.borderColor = Constants.BaseColor.border
-        layer.cornerRadius = Constants.Desgin.cornerRadius
+        layer.cornerRadius = 17
         layer.borderWidth = Constants.Desgin.borderWidth
-        titleLabel?.font = .systemFont(ofSize: 14)
+        titleLabel?.font = .customFont(.medium, size: 14)
         setTitleColor(Constants.BaseColor.text, for: .normal)
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
     }
     
     required init?(coder: NSCoder) {

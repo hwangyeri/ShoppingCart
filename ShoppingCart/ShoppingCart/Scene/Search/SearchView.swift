@@ -47,7 +47,7 @@ class SearchView: BaseView {
 //            layout = configurePinterestLayout()
 //        } else {
             layout = collectionViewLayout()
-//        }
+//        } 
 
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
@@ -56,8 +56,8 @@ class SearchView: BaseView {
     
     private func collectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 12
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+        let spacing: CGFloat = 10
+        layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         let size = UIScreen.main.bounds.width - (spacing * 3)
@@ -65,27 +65,27 @@ class SearchView: BaseView {
         return layout
     }
     
-//    @available(iOS 16.0, *)
-//    private func configurePinterestLayout() -> UICollectionViewLayout {
-//        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .estimated(120))
-//        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//        
-//        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(120))
-//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 2)
-//        group.interItemSpacing = .fixed(10)
-//        
-//        let section = NSCollectionLayoutSection(group: group)
-//        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-//        section.interGroupSpacing = 10
-//        
-//        let configuration = UICollectionViewCompositionalLayoutConfiguration()
-//        configuration.scrollDirection = .vertical
-//        
-//        let layout = UICollectionViewCompositionalLayout(section: section)
-//        layout.configuration = configuration
-//        
-//        return layout
-//    }
+    @available(iOS 16.0, *)
+    private func configurePinterestLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .estimated(150))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(150))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 2)
+        group.interItemSpacing = .fixed(10)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        section.interGroupSpacing = 10
+        
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.scrollDirection = .vertical
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        layout.configuration = configuration
+        
+        return layout
+    }
     
     let emptyView = {
         let view = EmptyView()
@@ -109,7 +109,7 @@ class SearchView: BaseView {
             make.top.equalTo(searchBar.snp.bottom).offset(10)
             make.leading.equalTo(searchBar).inset(10)
             make.bottom.equalTo(collectionView.snp.top).offset(-10)
-            make.width.equalTo(55)
+            make.width.equalTo(58)
             make.height.equalTo(34)
         }
         
@@ -121,7 +121,7 @@ class SearchView: BaseView {
         hPriceFilterButton.snp.makeConstraints { make in
             make.verticalEdges.height.equalTo(accuracyFilterButton)
             make.leading.equalTo(dateFilterButton.snp.trailing).offset(8)
-            make.width.equalTo(80)
+            make.width.equalTo(82)
         }
         
         lPriceFilterButton.snp.makeConstraints { make in
@@ -131,7 +131,8 @@ class SearchView: BaseView {
         }
         
         collectionView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalTo(self.safeAreaLayoutGuide)
         }
         
         emptyView.snp.makeConstraints { make in

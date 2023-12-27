@@ -11,7 +11,7 @@ extension Constants {
     
     enum BaseColor {
         static let background = UIColor.systemBackground
-        static let border = UIColor.systemGray.cgColor
+        static let border = UIColor.systemGray4.cgColor
         static let text = UIColor.label
         static let subText = UIColor.systemGray
         static let point = UIColor.systemRed

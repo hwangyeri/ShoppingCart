@@ -31,7 +31,7 @@ final class LikeCollectionViewCell: BaseCollectionViewCell {
     let titleLabel = InfoLabel(
         fontWeight: .regular,
         fontSize: 14,
-        textColor: Constants.BaseColor.text,
+        textColor: .darkGray,
         numberOfLines: 2
     )
     

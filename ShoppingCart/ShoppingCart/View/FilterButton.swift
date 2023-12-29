@@ -16,7 +16,7 @@ final class FilterButton: UIButton {
         layer.borderColor = Constants.BaseColor.border
         layer.cornerRadius = 17
         layer.borderWidth = Constants.Desgin.borderWidth
-        titleLabel?.font = .customFont(.medium, size: 14)
+        titleLabel?.font = .customFont(.regular, size: 14)
         setTitleColor(Constants.BaseColor.text, for: .normal)
         titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }

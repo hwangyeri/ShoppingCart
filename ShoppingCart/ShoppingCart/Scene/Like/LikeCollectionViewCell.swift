@@ -49,7 +49,6 @@ final class LikeCollectionViewCell: BaseCollectionViewCell {
     
     let likeButton = {
         let view = UIButton()
-//        view.tintColor = UIColor(named: "myGreen")
         view.tintColor = Constants.BaseColor.text
         view.contentMode = .scaleAspectFit
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 23, weight: .regular)

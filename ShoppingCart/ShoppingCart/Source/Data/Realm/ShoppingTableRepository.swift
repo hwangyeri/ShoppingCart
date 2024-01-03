@@ -28,8 +28,7 @@ class ShoppingTableRepository: ShoppingTableRepositoryType {
         }
     }
     
-    // MARK: - Reaml Create
-    
+    //MARK: - Reaml Create
     func createItem(_ item: ShoppingTable) {
         do {
             try realm.write {
@@ -41,8 +40,7 @@ class ShoppingTableRepository: ShoppingTableRepositoryType {
         }
     }
     
-    // MARK: - Realm Read
-    
+    //MARK: - Realm Read
     // likeDate 기준으로 최근 등록순으로 정렬
     func fetch() -> Results<ShoppingTable> {
         let data = realm.objects(ShoppingTable.self).sorted(byKeyPath: "likeDate", ascending: false)
@@ -61,8 +59,7 @@ class ShoppingTableRepository: ShoppingTableRepositoryType {
         return results
     }
     
-    // MARK: - Reaml Delete
-    
+    //MARK: - Reaml Delete
     func deleteItem(_ item: ShoppingTable) {
         do {
             try realm.write {

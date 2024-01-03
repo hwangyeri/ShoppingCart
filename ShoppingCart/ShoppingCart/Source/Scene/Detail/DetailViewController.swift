@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 import RealmSwift
 
-class DetailViewController: BaseViewController {
+final class DetailViewController: BaseViewController {
     
     let mainView = DetailView()
     var webView = WKWebView()
@@ -85,8 +85,7 @@ class DetailViewController: BaseViewController {
         
     }
     
-    // MARK: - >>>> 좋아요 버튼 클릭!!! <<<<<
-    
+    //MARK: - >>>> 좋아요 버튼 클릭!!! <<<<<
     @objc func likeButtonTapped() {
         print(#function)
         

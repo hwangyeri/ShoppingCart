@@ -7,7 +7,7 @@
 
 import Foundation
 
-class APIService {
+final class APIService {
     
     static let shared = APIService()
     

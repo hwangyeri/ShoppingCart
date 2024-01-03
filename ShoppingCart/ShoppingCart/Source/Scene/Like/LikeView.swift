@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class LikeView: BaseView {
+final class LikeView: BaseView {
     
     let searchBar = {
         let view = UISearchBar()

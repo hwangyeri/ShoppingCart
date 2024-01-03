@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import WebKit
 
-class DetailView: BaseView {
+final class DetailView: BaseView {
     
     var webView = WKWebView()
     

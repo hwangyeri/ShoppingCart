@@ -26,8 +26,7 @@ class BaseViewController: UIViewController {
 
 extension UIViewController {
 
-    // MARK: - Hide Keyboard
-    
+    //MARK: - Hide Keyboard
     func hideKeyboardWhenTappedBackground() {
          let tapEvent = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
          tapEvent.cancelsTouchesInView = false

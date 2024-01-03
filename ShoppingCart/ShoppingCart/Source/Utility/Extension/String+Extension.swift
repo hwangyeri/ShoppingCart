@@ -9,8 +9,7 @@ import Foundation
 
 extension String {
     
-    // MARK: - Number Formatter
-    
+    //MARK: - Number Formatter
     func formatNumber() -> String {
             let numberFormatter = NumberFormatter()
             numberFormatter.numberStyle = .decimal
@@ -20,8 +19,7 @@ extension String {
             return ""
         }
     
-    // MARK: - HTML tags Remove
-    
+    //MARK: - HTML tags Remove
     func removeHTMLTags() -> String {
         let regex = try? NSRegularExpression(pattern: "<[^>]+>", options: .caseInsensitive)
         let range = NSRange(location: 0, length: self.utf16.count)

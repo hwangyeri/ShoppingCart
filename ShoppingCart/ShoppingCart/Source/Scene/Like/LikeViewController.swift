@@ -16,7 +16,7 @@ import RealmSwift
  
  */
 
-class LikeViewController: BaseViewController {
+final class LikeViewController: BaseViewController {
     
     let mainView = LikeView()
     let repository = ShoppingTableRepository()
@@ -52,8 +52,7 @@ class LikeViewController: BaseViewController {
 
 }
 
-// MARK: - CollectionView
-
+//MARK: - CollectionView
 extension LikeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -96,8 +95,7 @@ extension LikeViewController: UICollectionViewDataSource, UICollectionViewDelega
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    // MARK: - >>>>> 좋아요 버튼 클릭 !!!! <<<<<<
-    
+    //MARK: - >>>>> 좋아요 버튼 클릭 !!!! <<<<<<
     @objc func likeButtonTapped(sender: UIButton) {
         print("----- 라이크뷰 좋아요 버튼 -----")
         
@@ -135,8 +133,7 @@ extension LikeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
 }
 
-// MARK: - SearchBar
-
+//MARK: - SearchBar
 extension LikeViewController: UISearchBarDelegate {
     
     // 데이터 베이스에 저장된 데이터 -> 실시간 검색 기능

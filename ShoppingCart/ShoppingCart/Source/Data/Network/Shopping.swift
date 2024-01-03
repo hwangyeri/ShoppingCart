@@ -7,15 +7,13 @@
 
 import Foundation
 
-// MARK: - Shopping
-
+//MARK: - Shopping
 struct Shopping: Codable {
     let total, start, display: Int // 총 검색 결과 개수, 검색 시작 위치, 한 번에 표시할 검색 결과 개수
     var items: [Item]
 }
 
-// MARK: - Item
-
+//MARK: - Item
 struct Item: Codable {
     let title: String // 상품 이름
     let image: String // 섬네일 이미지의 URL

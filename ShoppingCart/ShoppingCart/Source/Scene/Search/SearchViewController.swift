@@ -10,7 +10,7 @@ import SnapKit
 import Kingfisher
 //import RealmSwift
 
-class SearchViewController: BaseViewController {
+final class SearchViewController: BaseViewController {
     
     let mainView = SearchView()
     let repository = ShoppingTableRepository()
@@ -112,8 +112,7 @@ class SearchViewController: BaseViewController {
         }
     }
     
-    // MARK: - FilterButton
-    
+    //MARK: - FilterButton
     @objc func accuracyFilterButtonTapped() {
         callSearchAPI(.sim)
         currentFilterType = .sim
@@ -156,8 +155,7 @@ class SearchViewController: BaseViewController {
     
 }
 
-// MARK: - CollectionView
-
+//MARK: - CollectionView
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -207,8 +205,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         navigationController?.pushViewController(vc, animated: true)
     }
     
-// MARK: - >>>>> 좋아요 버튼 클릭 <<<<<<
-    
+    //MARK: - >>>>> 좋아요 버튼 클릭 <<<<<<
     @objc func likeButtonTapped(sender: UIButton) {
         print("----- 서치뷰 좋아요 버튼 -----")
         
@@ -251,8 +248,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     
 }
 
-// MARK: - SearchBar
-
+//MARK: - SearchBar
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -282,8 +278,7 @@ extension SearchViewController: UISearchBarDelegate {
     
 }
 
-// MARK: - Pagination
-
+//MARK: - Pagination
 extension SearchViewController: UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {

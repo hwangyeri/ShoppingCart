@@ -57,7 +57,7 @@ class SearchView: BaseView {
     private func collectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
-        layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: spacing, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         let size = UIScreen.main.bounds.width - (spacing * 3)
@@ -109,8 +109,8 @@ class SearchView: BaseView {
             make.top.equalTo(searchBar.snp.bottom).offset(10)
             make.leading.equalTo(searchBar).inset(10)
             make.bottom.equalTo(collectionView.snp.top).offset(-10)
-            make.width.equalTo(58)
-            make.height.equalTo(34)
+            make.width.equalTo(60)
+            make.height.equalTo(32)
         }
         
         dateFilterButton.snp.makeConstraints { make in

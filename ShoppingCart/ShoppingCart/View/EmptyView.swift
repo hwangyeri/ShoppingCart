@@ -26,17 +26,9 @@ final class EmptyView: UIView {
         return view
     }()
     
-    let image2View = {
-        let view = UIImageView()
-        view.image = UIImage(named: "clean")
-        view.tintColor = Constants.BaseColor.text
-        view.contentMode = .scaleAspectFit
-        return view
-    }()
-    
     let imageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "search")
+        view.image = UIImage(named: "heart")
         view.tintColor = Constants.BaseColor.text
         view.contentMode = .scaleAspectFit
         return view
@@ -55,7 +47,7 @@ final class EmptyView: UIView {
     
     func configureView() {
         
-        [image2View, imageView, mainLabel, subLabel].forEach {
+        [imageView, mainLabel, subLabel].forEach {
             addSubview($0)
         }
     }
@@ -65,12 +57,6 @@ final class EmptyView: UIView {
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(170)
             make.size.equalTo(50)
-        }
-        
-        image2View.snp.makeConstraints { make in
-            make.bottom.equalTo(imageView.snp.top).offset(22)
-            make.trailing.equalTo(imageView.snp.leading).offset(-2)
-            make.size.equalTo(20)
         }
         
         mainLabel.snp.makeConstraints { make in

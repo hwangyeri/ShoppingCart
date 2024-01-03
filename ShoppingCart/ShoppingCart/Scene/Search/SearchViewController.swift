@@ -191,7 +191,6 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         } else {
             DispatchQueue.main.async {
                 cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                cell.likeButton.tintColor = UIColor(named: "myGreen")
             }
         }
         
@@ -232,7 +231,6 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             if let cell = mainView.collectionView.cellForItem(at: IndexPath(item: rowIndex, section: 0)) as? SearchCollectionViewCell {
                 DispatchQueue.main.async {
                     cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                    cell.likeButton.tintColor = UIColor(named: "myGreen")
                 }
             }
         } else {

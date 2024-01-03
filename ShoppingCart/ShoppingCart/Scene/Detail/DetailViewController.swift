@@ -80,7 +80,6 @@ class DetailViewController: BaseViewController {
         } else {
             DispatchQueue.main.async {
                 self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                self.likeButton.tintColor = UIColor(named: "myGreen")
             }
         }
         
@@ -100,7 +99,6 @@ class DetailViewController: BaseViewController {
             print("새로운 아이템 저장: \(newItem)")
             DispatchQueue.main.async {
                 self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                self.likeButton.tintColor = UIColor(named: "myGreen")
             }
         } else {
             if let duplicatedItem = duplicateItems.first {

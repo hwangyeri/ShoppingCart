@@ -14,31 +14,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        // MARK: - Navigation Controller
-        
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        let vc = SearchViewController()
-        window?.rootViewController = UINavigationController(rootViewController: vc)
+        let lottieVC = LottieViewController()
+        window?.rootViewController = lottieVC
         window?.makeKeyAndVisible()
         
-        // MARK: - TabBar Controller
-        
-        let tabBar = UITabBarController()
-        
-        let firstVC = UINavigationController(rootViewController: SearchViewController())
-        firstVC.tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"),selectedImage: UIImage(systemName: "magnifyingglass"))
-        firstVC.navigationBar.topItem?.title = "쇼핑 검색"
-
-        let secondVC = UINavigationController(rootViewController: LikeViewController())
-        secondVC.tabBarItem = UITabBarItem(title: "좋아요", image: UIImage(systemName: "heart"),selectedImage: UIImage(systemName: "heart"))
-        secondVC.navigationBar.topItem?.title = "좋아요 목록"
-        
-        tabBar.viewControllers = [firstVC, secondVC]
-        tabBar.tabBar.backgroundColor = Constants.BaseColor.background
-        tabBar.tabBar.tintColor = Constants.BaseColor.text
-        
-        window?.rootViewController = tabBar
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.1) {
+            let tabBar = UITabBarController()
+            
+            let firstVC = UINavigationController(rootViewController: SearchViewController())
+            firstVC.tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"),selectedImage: UIImage(systemName: "magnifyingglass"))
+            firstVC.navigationBar.topItem?.title = "쇼핑 검색"
+            
+            let secondVC = UINavigationController(rootViewController: LikeViewController())
+            secondVC.tabBarItem = UITabBarItem(title: "좋아요", image: UIImage(systemName: "heart"),selectedImage: UIImage(systemName: "heart"))
+            secondVC.navigationBar.topItem?.title = "좋아요 목록"
+            
+            tabBar.viewControllers = [firstVC, secondVC]
+            tabBar.tabBar.backgroundColor = Constants.BaseColor.background
+            tabBar.tabBar.tintColor = Constants.BaseColor.text
+            
+            self.window?.rootViewController = tabBar
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

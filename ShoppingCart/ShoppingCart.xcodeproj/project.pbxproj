@@ -47,6 +47,7 @@
 		2B279C592AAE3E7100645766 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C582AAE3E7100645766 /* DetailViewController.swift */; };
 		2B279C5B2AAE3EE800645766 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279C5A2AAE3EE800645766 /* DetailView.swift */; };
 		2B279CBD2AAF3AE800645766 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279CBC2AAF3AE800645766 /* String+Extension.swift */; };
+		2B41096E2B526341006149BE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2B41096D2B526341006149BE /* SnapKit */; };
 		2B589E6E2AB29D7300941615 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2B589E6D2AB29D7300941615 /* Realm */; };
 		2B589E702AB29D7300941615 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2B589E6F2AB29D7300941615 /* RealmSwift */; };
 		2B66F16A2ABF218400F5CF55 /* Alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B66F1692ABF218400F5CF55 /* Alert+Extension.swift */; };
@@ -54,8 +55,20 @@
 		2BC269032B453D2000738F34 /* ShoppingCartAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BC269022B453D2000738F34 /* ShoppingCartAnimation.json */; };
 		2BC269062B453F2200738F34 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2BC269052B453F2200738F34 /* Lottie */; };
 		2BD126792AB5A03700F6C0F2 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD126782AB5A03700F6C0F2 /* EmptyView.swift */; };
-		2BD1267C2AB5B27000F6C0F2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2BD1267B2AB5B27000F6C0F2 /* SnapKit */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2B4109662B525D7B006149BE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2B10885E2B3C193D0085EE4C /* LikeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -112,9 +125,9 @@
 			files = (
 				2BC269062B453F2200738F34 /* Lottie in Frameworks */,
 				2B589E702AB29D7300941615 /* RealmSwift in Frameworks */,
-				2BD1267C2AB5B27000F6C0F2 /* SnapKit in Frameworks */,
 				2B589E6E2AB29D7300941615 /* Realm in Frameworks */,
 				2B279C432AAB252D00645766 /* Kingfisher in Frameworks */,
+				2B41096E2B526341006149BE /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +172,7 @@
 			children = (
 				2B279BEB2AA9AD4500645766 /* ShoppingCart */,
 				2B279BEA2AA9AD4500645766 /* Products */,
+				2B4109622B525D7B006149BE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -286,6 +300,13 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		2B4109622B525D7B006149BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2B53A1002B45516A0077BF6C /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +371,7 @@
 				2B279BE52AA9AD4500645766 /* Sources */,
 				2B279BE62AA9AD4500645766 /* Frameworks */,
 				2B279BE72AA9AD4500645766 /* Resources */,
+				2B4109662B525D7B006149BE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -360,8 +382,8 @@
 				2B279C422AAB252D00645766 /* Kingfisher */,
 				2B589E6D2AB29D7300941615 /* Realm */,
 				2B589E6F2AB29D7300941615 /* RealmSwift */,
-				2BD1267B2AB5B27000F6C0F2 /* SnapKit */,
 				2BC269052B453F2200738F34 /* Lottie */,
+				2B41096D2B526341006149BE /* SnapKit */,
 			);
 			productName = ShoppingCart;
 			productReference = 2B279BE92AA9AD4500645766 /* ShoppingCart.app */;
@@ -394,8 +416,8 @@
 			packageReferences = (
 				2B279C412AAB252D00645766 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				2B589E6C2AB29D7300941615 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				2BD1267A2AB5B27000F6C0F2 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				2BC269042B453F2200738F34 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				2B41096C2B526341006149BE /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 2B279BEA2AA9AD4500645766 /* Products */;
 			projectDirPath = "";
@@ -689,6 +711,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		2B41096C2B526341006149BE /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
 		2B589E6C2AB29D7300941615 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
@@ -705,14 +735,6 @@
 				minimumVersion = 4.3.4;
 			};
 		};
-		2BD1267A2AB5B27000F6C0F2 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -720,6 +742,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2B279C412AAB252D00645766 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		2B41096D2B526341006149BE /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B41096C2B526341006149BE /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		2B589E6D2AB29D7300941615 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -735,11 +762,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2BC269042B453F2200738F34 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		2BD1267B2AB5B27000F6C0F2 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2BD1267A2AB5B27000F6C0F2 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

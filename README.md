@@ -1,6 +1,6 @@
 # 🛒 ShoppingCart
 
-![ShoppingCartScreenshot 001-removebg-preview](https://github.com/hwangyeri/ShoppingCart/assets/114602459/15f188ec-076a-4bdb-8285-3d4147ce1786)
+![ShoppingCartScreenshot 001](https://github.com/hwangyeri/ShoppingCart/assets/114602459/8e521946-474a-439a-8a42-67d119fff007)
 <br/>
 
 ### 위시템을 담아 나만의 장바구니를 만들 수 있는 앱입니다.

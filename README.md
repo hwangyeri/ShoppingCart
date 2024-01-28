@@ -1,7 +1,6 @@
 # 🛒 ShoppingCart
 
-![ShoppingCartScreenshot 001](https://github.com/hwangyeri/ShoppingCart/assets/114602459/8e521946-474a-439a-8a42-67d119fff007)
-<br/>
+![shoppingcartMockup 001](https://github.com/hwangyeri/ShoppingCart/assets/114602459/d9ce6aa2-ae38-4dfa-becd-c2a46d277178)
 
 ### 위시템을 담아 나만의 장바구니를 만들 수 있는 앱입니다.
 - 네이버 쇼핑 API를 활용해 상품 검색 기능 제공

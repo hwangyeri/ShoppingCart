@@ -14,7 +14,8 @@ protocol ReusableViewProtocol: AnyObject {
     static var reuseIdentifier: String { get }
 }
 
-extension ReusableViewProtocol where Self: NSObject { // where Self: protocol의 extension에서 특정 타입에서만 확장하고자 할 때 사용, 유형 제약조건
+extension ReusableViewProtocol where Self: NSObject { 
+    // where Self: protocol의 extension에서 특정 타입에서만 확장하고자 할 때 사용, 유형 제약조건
     static var reuseIdentifier: String {
         return self.description()
     }

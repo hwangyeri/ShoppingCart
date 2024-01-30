@@ -10,7 +10,7 @@ import SnapKit
 
 final class SearchCollectionViewCell: BaseCollectionViewCell {
     
-    let imageView = {
+    let imgView = {
         let view = PhotoImageView(frame: .zero)
         return view
     }()
@@ -57,20 +57,18 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
     }()
     
     override func configure() {
-        
-        [imageView, mallNameLabel, titleLabel, lPriceLabel, likeBackgroundImageView, likeButton].forEach {
+        [imgView, mallNameLabel, titleLabel, lPriceLabel, likeBackgroundImageView, likeButton].forEach {
             contentView.addSubview($0)
         }
     }
     
     override func setConstraints() {
-        imageView.snp.makeConstraints { make in
+        imgView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview()
-//            make.height.equalToSuperview().multipliedBy(0.7)
         }
         
         mallNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(12)
+            make.top.equalTo(imgView.snp.bottom).offset(12)
             make.horizontalEdges.equalToSuperview().inset(5)
         }
         
@@ -86,7 +84,7 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         }
         
         likeButton.snp.makeConstraints { make in
-            make.trailing.bottom.equalTo(imageView).inset(10)
+            make.trailing.bottom.equalTo(imgView).inset(10)
             make.size.equalTo(35)
         }
         
@@ -98,7 +96,7 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func prepareForReuse() {
-        imageView.image = UIImage(named: "heart")
+        imgView.image = .none
         mallNameLabel.text = ""
         titleLabel.text = ""
         lPriceLabel.text = ""

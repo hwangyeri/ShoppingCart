@@ -175,9 +175,9 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.lPriceLabel.text = "\(data.lprice.formatNumber())원"
         
         if let url = URL(string: data.image) {
-            cell.imageView.kf.setImage(with: url)
+            cell.imgView.kf.setImage(with: url)
         } else {
-            cell.imageView.image = UIImage(systemName: "nosign")
+            cell.imgView.image = UIImage(systemName: "nosign")
         }
         
         let duplicateItems = repository.duplicateFilterItems(forProductID: data.productID)

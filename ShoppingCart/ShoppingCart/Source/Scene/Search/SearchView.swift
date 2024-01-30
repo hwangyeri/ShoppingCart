@@ -42,14 +42,7 @@ final class SearchView: BaseView {
     }()
     
     lazy var collectionView: UICollectionView = {
-        let layout: UICollectionViewLayout
-//        if #available(iOS 16.0, *) {
-//            layout = configurePinterestLayout()
-//        } else {
-            layout = collectionViewLayout()
-//        } 
-
-        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
         return view
     }()
@@ -62,28 +55,6 @@ final class SearchView: BaseView {
         layout.minimumInteritemSpacing = spacing
         let size = UIScreen.main.bounds.width - (spacing * 3)
         layout.itemSize = CGSize(width: size / 2, height: size / 1.35)
-        return layout
-    }
-    
-    @available(iOS 16.0, *)
-    private func configurePinterestLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .estimated(150))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(150))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 2)
-        group.interItemSpacing = .fixed(10)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-        section.interGroupSpacing = 10
-        
-        let configuration = UICollectionViewCompositionalLayoutConfiguration()
-        configuration.scrollDirection = .vertical
-        
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        layout.configuration = configuration
-        
         return layout
     }
     

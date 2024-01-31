@@ -106,7 +106,7 @@ extension LikeViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         let alertController = UIAlertController(
             title: "잠시만요..!",
-            message: "해당 상품이 좋아요 목록에서 삭제됩니다.\n정말로 삭제하실 건가요? 🥹",
+            message: "해당 상품이 좋아요 목록에서 삭제됩니다.\n정말로 삭제하실 건가요?",
             preferredStyle: .alert
         )
         

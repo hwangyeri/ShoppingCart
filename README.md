@@ -20,10 +20,11 @@
 <br/>
 
 ## 3. 기술 스택
-- `UIKit`, `CodeBaseUI`
-- `Autolayout`, `CompositionalLayout`, `DarkMode`
-- `MVC`, `Singleton`, `Repository`, `GCD`, `URLSession`
-- `Kingfisher`, `Snapkit`, `RealmSwift`, `RealmCocoa`, `Lottie`
+- `UIKit`, `CodeBaseUI`, `DarkMode`
+- `Autolayout`, `CompositionalLayout`, `Snapkit`
+- `MVC`, `Singleton`, `Repository`, `GCD`
+- `URLSession`, `Kingfisher`, `Lottie`
+- `RealmSwift`, `RealmCocoa`
 <br/>
 
 ### 3.1 라이브러리
@@ -37,7 +38,7 @@
 <br/>
 
 ## 4. 핵심 기능
-- 네이버 Open API를 활용해 쇼핑 검색, Cursor-based `Pagination` 기능 구현
+- 네이버 Open API를 활용해 쇼핑 검색, Offset-based `Pagination` 기능 구현
 - `Realm` Local DB를 활용해 좋아요 목록 관리, 실시간 검색 기능 구현
 - `URLSession`과 `Enum`을 사용해 네트워크 통신 기능 구현
 - `NotificationCenter`을 활용해 좋아요 상태 동기화 처리
@@ -46,13 +47,68 @@
 <br/>
 
 ## 5. Trouble Shooting
+### 이미지 캐싱 및 다운샘플링
+- 문제 상황 : 네이버 쇼핑 API를 통해 가져온 원본 이미지를 이미지 뷰에 표기한 경우, 메모리 오버헤드로 인해 이미지가 제대로 로드되지 않거나 런타임 에러가 발생했습니다.
+- 해결 방법 : Kingfisher를 활용해 이미지 캐싱 및 다운샘플링을 통해 이미지를 효과적으로 로드하고, 메모리 사용을 최적화했습니다. 그리고 prepareForReuse 메서드를 활용해 재사용되는 셀의 상태를 초기화하여 메모리 누수를 방지했습니다.
+</br>
+
+```swift
+extension UIImageView {
+    
+    func setImage(withURL imageUrl: String) {
+        
+        // 캐싱 목적으로 원본 이미지 디스크에 저장
+        var options: KingfisherOptionsInfo = [
+            .cacheOriginalImage
+        ]
+        
+        // 메모리 사용량을 줄이기 위해서 이미지 다운샘플링 처리
+        options.append(.processor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100))))
+        
+        // 이미지 품질을 향상 시키기 위해서 기기 화면에 맞는 배율 지정
+        options.append(.scaleFactor(UIScreen.main.scale))
+        
+        self.kf.setImage(
+            with: URL(string: imageUrl),
+            placeholder: UIImage(named: "shoppingCart"),
+            options: options
+        )
+    }
+    
+}
+
+final class SearchCollectionViewCell: BaseCollectionViewCell {
+
+ override func prepareForReuse() {
+        imgView.image = .none
+        mallNameLabel.text = ""
+        titleLabel.text = ""
+        lPriceLabel.text = ""
+    }
+}
+```
+
 <br/>
 
 ## 6. UI/UX
-- gif 파일 업데이트 예정
+|![Simulator Screen Recording - iPhone 14 - 2024-01-31 at 15 15 23](https://github.com/hwangyeri/ShoppingCart/assets/114602459/473e59e5-fff4-4984-8b55-d6e182d17d74)|![Simulator Screen Recording - iPhone 14 - 2024-01-31 at 15 17 04](https://github.com/hwangyeri/ShoppingCart/assets/114602459/88a191be-5494-4dd6-b8ef-5954f571166a)|
+|:-:|:-:|
+|`상품 검색/필터, 상세페이지 조회 기능`|`상품 좋아요 기능, 다크모드`|
+
+FIXME: 사이즈 줄이기
 <br/>
 
-## 7. Commit Convention
+## 7. 회고
+이번 프로젝트를 통해 저는 Open API 네트워크 통신, RealmSwift를 활용한 Local DB, 실시간 검색, 등 실제 서비스에서 주로 사용하는 기술들을 경험했습니다. 특히, DB 검색 속도를 향상시키기 위해 효율적인 DB 스키마 설계의 중요성과 메모리 사용량 최적화를 위한 이미지 처리의 필요성에 대해 배웠습니다.
+
+필터 버튼을 눌렀을 때 최상단으로 스크롤 되는 기능, 검색 실패나 좋아요 취소 시 alert 구현, 등 개발자 관점에서 생각할 수 있는 배려로 서비스를 만드는 것이 흥미로웠습니다.
+
+짧은 기간 동안 결과물 완성하는 것을 목표로 삼다보니 구조적인 측면을 많이 고려하지 못해서 아쉬웠습니다. 책임을 분리하기 위해서 MVC 패턴을 도입했지만, 분리가 미흡하였습니다. 다음에는 좀 더 자신만의 기준을 세워 역할을 나눠서 MVC뿐만 아니라 MVVM 패턴까지 도전해보고 싶습니다.
+
+FIXME: 내용 수정
+<br/>
+
+## 8. Commit Convention
 ```
 - [Feat] 새로운 기능 구현
 - [Style] UI 디자인 변경
@@ -64,5 +120,4 @@
 - [Comment] 필요한 주석 추가 및 변경
 - [Test] 테스트 코드, 테스트 코드 리펙토링
 ```
-<br/>
 

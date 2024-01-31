@@ -9,9 +9,6 @@ import UIKit
 import Kingfisher
 
 extension UIImageView {
-     
-    // 이미지 효율적으로 로드하고 표시할 수 있도록 설계
-    // 메모리 사용량을 줄이기 위해서 이미지 다운샘플링 처리
     
     func setImage(withURL imageUrl: String) {
         

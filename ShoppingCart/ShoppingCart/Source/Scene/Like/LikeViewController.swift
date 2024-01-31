@@ -67,16 +67,11 @@ extension LikeViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.mallNameLabel.text = data.mallName
         cell.titleLabel.text = data.title.removeHTMLTags()
         cell.lPriceLabel.text = "\(data.price.formatNumber())원"
-//        cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         
         let formatDateResult = data.likeDate.timeAgo()
         cell.likeDateLabel.text = formatDateResult
         
-        if let url = URL(string: data.photo) {
-            cell.imageView.kf.setImage(with: url)
-        } else {
-            cell.imageView.image = UIImage(systemName: "nosign")
-        }
+        cell.imageView.setImage(withURL: data.photo)
         
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)

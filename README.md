@@ -91,21 +91,19 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
 <br/>
 
 ## 6. UI/UX
-|![Simulator Screen Recording - iPhone 14 - 2024-01-31 at 15 15 23](https://github.com/hwangyeri/ShoppingCart/assets/114602459/473e59e5-fff4-4984-8b55-d6e182d17d74)|![Simulator Screen Recording - iPhone 14 - 2024-01-31 at 15 17 04](https://github.com/hwangyeri/ShoppingCart/assets/114602459/88a191be-5494-4dd6-b8ef-5954f571166a)|
+|<img src="https://github.com/hwangyeri/ShoppingCart/assets/114602459/473e59e5-fff4-4984-8b55-d6e182d17d74.gif" width=250></img>|<img src="https://github.com/hwangyeri/ShoppingCart/assets/114602459/88a191be-5494-4dd6-b8ef-5954f571166a.gif" width=250></img>|
 |:-:|:-:|
-|`상품 검색/필터, 상세페이지 조회 기능`|`상품 좋아요 기능, 다크모드`|
-
-FIXME: 사이즈 줄이기
+|`상품 검색/필터 기능`|`좋아요 기능, 다크모드`|
 <br/>
 
-## 7. 회고
-이번 프로젝트를 통해 저는 Open API 네트워크 통신, RealmSwift를 활용한 Local DB, 실시간 검색, 등 실제 서비스에서 주로 사용하는 기술들을 경험했습니다. 특히, DB 검색 속도를 향상시키기 위해 효율적인 DB 스키마 설계의 중요성과 메모리 사용량 최적화를 위한 이미지 처리의 필요성에 대해 배웠습니다.
+## 7. 프로젝트 회고
+이번 프로젝트를 통해 저는 Open API 네트워크 통신, RealmSwift를 활용한 Local DB, 실시간 검색, 등 실제 서비스에서 흔히 사용하는 기술을 경험했습니다. DB 검색 속도를 향상시키기 위해 효율적인 DB 스키마 설계의 중요성과 메모리 사용량 최적화를 위한 이미지 처리의 필요성에 대해 이해할 수 있어서 좋았습니다. 
 
-필터 버튼을 눌렀을 때 최상단으로 스크롤 되는 기능, 검색 실패나 좋아요 취소 시 alert 구현, 등 개발자 관점에서 생각할 수 있는 배려로 서비스를 만드는 것이 흥미로웠습니다.
+프로젝트를 진행하면서 필터 버튼을 눌렀을 때 최상단으로 스크롤 되는 기능, 검색 실패나 좋아요 취소 시 alert 구현, 등 사용자 친화적인 측면에 중점을 두었습니다. 개발자 관점에서 생각할 수 있는 배려로 서비스를 만들 수 있다는 것이 흥미로웠습니다.
 
-짧은 기간 동안 결과물 완성하는 것을 목표로 삼다보니 구조적인 측면을 많이 고려하지 못해서 아쉬웠습니다. 책임을 분리하기 위해서 MVC 패턴을 도입했지만, 분리가 미흡하였습니다. 다음에는 좀 더 자신만의 기준을 세워 역할을 나눠서 MVC뿐만 아니라 MVVM 패턴까지 도전해보고 싶습니다.
+짧은 기간 동안 결과물을 완성하는 것을 목표로 삼다 보니 구조적인 측면이나 추가 기능을 구현하지 못한 것이 아쉬웠습니다. 예를 들어, 네트워크가 연결되지 않았을 때의 대응이나 MVC 구조로 설계했지만 구조에 맞지 않은 로직을 구성한 부분이 있습니다. 
 
-FIXME: 내용 수정
+다음에는 본인의 기준을 세워 역할에 맞는 로직을 도입해 코드 중복을 최소화하고 유지 보수성을 높이겠습니다. 또한, ViewController의 역할이 비대해지는 것을 막기 위해서 UI 로직과 비즈니스 로직을 효과적으로 분리하는 MVVM 패턴을 공부하고 적용하겠습니다.
 <br/>
 
 ## 8. Commit Convention
@@ -120,4 +118,4 @@ FIXME: 내용 수정
 - [Comment] 필요한 주석 추가 및 변경
 - [Test] 테스트 코드, 테스트 코드 리펙토링
 ```
-
+<br/>

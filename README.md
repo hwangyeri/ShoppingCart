@@ -105,6 +105,13 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
 
 다음에는 본인의 기준을 세워 역할에 맞는 로직을 도입해 코드 중복을 최소화하고 유지 보수성을 높이겠습니다. 또한, ViewController의 역할이 비대해지는 것을 막기 위해서 UI 로직과 비즈니스 로직을 효과적으로 분리하는 MVVM 패턴을 공부하고 적용하겠습니다.
 
+### Keep
+- 수정 예정
+
+### Problem • Try
+- 수정 예정
+
+
 <br/>
 
 ## 8. Commit Convention

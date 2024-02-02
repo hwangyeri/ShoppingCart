@@ -20,7 +20,7 @@
 <br/>
 
 ## 3. 기술 스택
-- `UIKit`, `CodeBaseUI`, `DarkMode`
+- `UIKit`, `CodeBaseUI`
 - `Autolayout`, `CompositionalLayout`, `Snapkit`
 - `MVC`, `Singleton`, `Repository`, `GCD`
 - `URLSession`, `Kingfisher`, `Lottie`

@@ -3,9 +3,9 @@
 
 ### 위시템을 담아 나만의 장바구니를 만들 수 있는 앱입니다.
 - 네이버 쇼핑 API를 활용해 상품 검색 기능 제공
-- `RealmSwift`을 활용해 상품 좋아요 기능 제공
+- WebKit을 활용해 상품 상세페이지 조회 기능 제공
+- Realm DB 활용해 상품 좋아요 기능 제공
 - 좋아요 목록 관리, 실시간 검색 기능 제공
-- `WKWebView`을 활용해 상품 상세페이지 조회 기능 제공
 <br/>
 
 ### 1. 개발 환경
@@ -21,27 +21,17 @@
 
 ## 3. 기술 스택
 - `UIKit`, `CodeBaseUI`
+- `MVC`, `Singleton`, `Repository`
 - `Autolayout`, `CompositionalLayout`, `Snapkit`
-- `MVC`, `Singleton`, `Repository`, `GCD`
-- `URLSession`, `Kingfisher`, `Lottie`
+- `URLSession`, `Kingfisher`, `Lottie`, `SPM`
 - `RealmSwift`, `RealmCocoa`
-<br/>
-
-### 3.1 라이브러리
- 
-| 이름 | 버전 | 의존성 관리 |
-| ------------- | :-------: | :---: |
-| Kingfisher   | `7.0.0`   | `SPM` |
-| Realm        | `10.42.1` | `SPM` |
-| SnapKit      | `5.0.0`   | `SPM` |
-| Lottie       | `4.3.4`   | `SPM` |
 <br/>
 
 ## 4. 핵심 기능
 - 네이버 Open API를 활용해 쇼핑 검색, Offset-based `Pagination` 기능 구현
 - `Realm` Local DB를 활용해 좋아요 목록 관리, 실시간 검색 기능 구현
 - `URLSession`과 `Enum`을 사용해 네트워크 통신 기능 구현
-- `NotificationCenter`을 활용해 좋아요 상태 동기화 처리
+- `NotificationCenter`를 활용해 좋아요 상태 동기화 처리
 - `Kingfisher`를 활용해 이미지 캐싱 및 다운샘플링 기능 구현
 - `Lottie`를 활용해 Animation LaunchScreen 구현
 <br/>

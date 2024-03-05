@@ -1,45 +1,46 @@
 # 🛒 ShoppingCart
+### 위시템을 담아 나만의 장바구니를 만들 수 있는 앱입니다.
+
 ![shoppingcartMockup 001](https://github.com/hwangyeri/ShoppingCart/assets/114602459/8d469f1a-98c5-4a25-982f-8b07338ae87d)
 
-### 위시템을 담아 나만의 장바구니를 만들 수 있는 앱입니다.
-- 네이버 쇼핑 API를 활용해 상품 검색 기능 제공
-- WebKit을 활용해 상품 상세페이지 조회 기능 제공
-- Realm DB 활용해 상품 좋아요 기능 제공
-- 좋아요 목록 관리, 실시간 검색 기능 제공
+## 1. 주요 기능
+- 상품 검색 • 좋아요 • 상세페이지 조회 기능
+- 상품 이미지 • 쇼핑몰 • 가격 정보 확인 및 필터 기능
+- 좋아요 목록 관리 • 실시간 검색 기능
 <br/>
 
-### 1. 개발 환경
+## 2. 개발 환경
 - Deployment Target iOS 13.0
 - Only Portrait
 - Dark mode 지원
 <br/>
 
-### 2. 개인 프로젝트
+## 3. 개인 프로젝트
 - **개발 기간** : 2023.09.07 ~ 2023.9.16 (1주)
 - **개발 인원** : 1명
 <br/>
 
-## 3. 기술 스택
-- `UIKit`, `CodeBaseUI`
-- `MVC`, `Singleton`, `Repository`
-- `Autolayout`, `CompositionalLayout`, `Snapkit`
-- `URLSession`, `Kingfisher`, `Lottie`, `SPM`
-- `RealmSwift`, `RealmCocoa`
+## 4. 기술 스택
+- `UIKit`, `CodeBaseUI`, `SPM`
+- `MVC`, `Singleton`, `Repository Pattern`
+- `Autolayout`, `CompositionalLayout`
+- `Snapkit`, `Kingfisher`, `URLSession`
+- `Realm`, `Webkit`, `Lottie`
 <br/>
 
-## 4. 핵심 기능
-- 네이버 Open API를 활용해 쇼핑 검색, Offset-based `Pagination` 기능 구현
-- `Realm` Local DB를 활용해 좋아요 목록 관리, 실시간 검색 기능 구현
-- `URLSession`과 `Enum`을 사용해 네트워크 통신 기능 구현
-- `NotificationCenter`를 활용해 좋아요 상태 동기화 처리
-- `Kingfisher`를 활용해 이미지 캐싱 및 다운샘플링 기능 구현
-- `Lottie`를 활용해 Animation LaunchScreen 구현
+## 5. 핵심 기능
+- 네이버 Open API를 이용한 쇼핑 검색 • Offset-based `Pagination` 구현
+- `Realm` Local DB를 이용한 좋아요 목록 관리 • 실시간 검색 기능
+- `URLSession`과 `Enum`을 이용한 REST API 통신 캡슐화
+- `Kingfisher`를 이용한 이미지 로드 및 최적화
+- `NotificationCenter`를 이용한 좋아요 상태 동기화 처리
+- `Lottie`를 이용한 Animation LaunchScreen 구현
 <br/>
 
-## 5. Trouble Shooting
-### 이미지 캐싱 및 다운샘플링
-- 문제 상황 : 네이버 쇼핑 API를 통해 가져온 원본 이미지를 이미지 뷰에 표기한 경우, 메모리 오버헤드로 인해 이미지가 제대로 로드되지 않거나 런타임 에러가 발생했습니다.
-- 해결 방법 : Kingfisher를 활용해 이미지 캐싱 및 다운샘플링을 통해 이미지를 효과적으로 로드하고, 메모리 사용을 최적화했습니다. 그리고 prepareForReuse 메서드를 활용해 재사용되는 셀의 상태를 초기화하여 메모리 누수를 방지했습니다.
+## 6. 문제 해결
+### API 통신으로 수신한 이미지 원본을 Cell에 할당한 경우, 런타임 에러 발생
+- 문제 상황 : 네이버 쇼핑 API를 통해 가져온 원본 이미지를 이미지 뷰에 표기한 경우, 메모리 오버헤드로 인해 이미지가 제대로 로드되지 않거나 런타임 에러가 발생함.
+- 해결 방법 : Kingfisher를 이용해 이미지를 효과적으로 로드하고, 메모리 사용을 최적화함.
 </br>
 
 ```swift
@@ -66,7 +67,17 @@ extension UIImageView {
     }
     
 }
+```
 
+<br/>
+
+### Cell 재사용시 깜빡이거나 데이터가 뒤섞이는 현상 발생
+- 문제 상황 : TableView에서 셀이 재사용 될 때, 이전의 데이터와 새로운 데이터가 뒤섞이거나 UI가 깜빡거리는 현상이 발생함.
+- 해결 방법 : prepareForReuse 메서드를 이용해 재사용 되는 셀의 상태를 초기화해서 문제를 해결하고, 메모리 누수를 방지함.
+</br>
+
+
+```swift
 final class SearchCollectionViewCell: BaseCollectionViewCell {
 
  override func prepareForReuse() {
@@ -96,15 +107,15 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
 다음에는 본인의 기준을 세워 역할에 맞는 로직을 도입해 코드 중복을 최소화하고 유지 보수성을 높이겠습니다. 또한, ViewController의 역할이 비대해지는 것을 막기 위해서 UI 로직과 비즈니스 로직을 효과적으로 분리하는 MVVM 패턴을 공부하고 적용하겠습니다.
 
 ### Keep
-- 수정 예정
+- 코드 모듈화 및 재사용성을 높이기 위해 Repository 패턴을 적용하고, Protocol을 사용하여 인터페이스 의존성 역전을 시도한 점
 
 ### Problem • Try
-- 수정 예정
-
+- 네트워크 연결이 끊어졌을 때, 사용자에게 Alert으로 표시해주지 
+- MVC 구조에 맞지 않은 로직을 개선하고, UI 로직과 비즈니스 로직을 효과적으로 분리하기 위해 MVVM 패턴을 공부하고 도입해보기
 
 <br/>
 
-## 8. Commit Convention
+## Commit Convention
 ```
 - [Feat] 새로운 기능 구현
 - [Style] UI 디자인 변경

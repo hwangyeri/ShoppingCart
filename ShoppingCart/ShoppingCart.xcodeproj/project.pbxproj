@@ -17,6 +17,7 @@
 		2B1088732B3C2E690085EE4C /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B1088722B3C2E690085EE4C /* Pretendard-SemiBold.otf */; };
 		2B1088752B3C2E6F0085EE4C /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B1088742B3C2E6F0085EE4C /* Pretendard-Thin.otf */; };
 		2B1088772B3C2F680085EE4C /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B1088762B3C2F670085EE4C /* Pretendard-Light.otf */; };
+		2B18BC682B6917D6007636EC /* ImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B18BC672B6917D6007636EC /* ImageView+.swift */; };
 		2B279BED2AA9AD4500645766 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279BEC2AA9AD4500645766 /* AppDelegate.swift */; };
 		2B279BEF2AA9AD4500645766 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279BEE2AA9AD4500645766 /* SceneDelegate.swift */; };
 		2B279BF12AA9AD4500645766 /* LottieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B279BF02AA9AD4500645766 /* LottieViewController.swift */; };
@@ -81,6 +82,7 @@
 		2B1088722B3C2E690085EE4C /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		2B1088742B3C2E6F0085EE4C /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		2B1088762B3C2F670085EE4C /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		2B18BC672B6917D6007636EC /* ImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+.swift"; sourceTree = "<group>"; };
 		2B279BE92AA9AD4500645766 /* ShoppingCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B279BEC2AA9AD4500645766 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B279BEE2AA9AD4500645766 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -252,9 +254,9 @@
 		2B279C182AA9BF6F00645766 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				2B279C462AAB5D4600645766 /* Extension */,
-				2B279C1B2AA9C00B00645766 /* Constants.swift */,
 				2B279C192AA9BFDC00645766 /* Color.swift */,
+				2B279C1B2AA9C00B00645766 /* Constants.swift */,
+				2B279C462AAB5D4600645766 /* Extension */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -296,6 +298,7 @@
 				2B66F1692ABF218400F5CF55 /* Alert+Extension.swift */,
 				2B1088602B3C27610085EE4C /* Date+.swift */,
 				2B1088622B3C2D3A0085EE4C /* Font+.swift */,
+				2B18BC672B6917D6007636EC /* ImageView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				2B6D6E1E2B0B4143004A8DA9 /* APIKey.swift in Sources */,
 				2B279C172AA9BED200645766 /* BaseViewController.swift in Sources */,
 				2B279C532AAC5F7700645766 /* ShoppingTable.swift in Sources */,
+				2B18BC682B6917D6007636EC /* ImageView+.swift in Sources */,
 				2B279C452AAB5C8C00645766 /* Endpoint.swift in Sources */,
 				2B279C272AA9C23300645766 /* SearchCollectionViewCell.swift in Sources */,
 				2B279C352AAA373400645766 /* SearchView.swift in Sources */,
@@ -627,7 +631,7 @@
 				DEVELOPMENT_TEAM = 7T88N7TX7W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShoppingCart/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "황예리";
+				INFOPLIST_KEY_CFBundleDisplayName = ShoppingCart;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = Lottie.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -658,7 +662,7 @@
 				DEVELOPMENT_TEAM = 7T88N7TX7W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShoppingCart/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "황예리";
+				INFOPLIST_KEY_CFBundleDisplayName = ShoppingCart;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = Lottie.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

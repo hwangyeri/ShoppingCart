@@ -1,4 +1,6 @@
 # 🛒 ShoppingCart
+<img width="70" alt="스크린샷 2024-03-07 오전 1 38 01" src="https://github.com/hwangyeri/ShoppingCart/assets/114602459/abf0e17b-c3e8-4a71-804b-3ee7d20b561a">
+
 ### 위시템을 담아 나만의 장바구니를 만들 수 있는 앱입니다.
 
 ![shoppingcartMockup 001](https://github.com/hwangyeri/ShoppingCart/assets/114602459/8d469f1a-98c5-4a25-982f-8b07338ae87d)
@@ -25,7 +27,7 @@
 <br/>
 
 ## 핵심 기술
-- 네이버 Open API를 이용한 쇼핑 검색 • Offset-based `Pagination` 구현
+- 네이버 Open API를 이용한 쇼핑 검색, `Offset-based Pagination` 구현
 - `Realm` Local DB를 이용한 좋아요 목록 관리 • 실시간 검색 기능
 - `URLSession`과 `Enum`을 이용한 REST API 통신 캡슐화
 - `Kingfisher`를 이용한 이미지 로드 및 최적화
